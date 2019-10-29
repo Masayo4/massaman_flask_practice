@@ -21,7 +21,24 @@ app.py アプリロジックを書く ルーティングの話を書いたりす
 run.py Webサーバを立てるための実行ファイル  
 
 動かし方  
-`python run.`  
+`python run.py`
+
+### Web画像表示
+staticの下にimagesのdirをたす
+```
+(any directory)
+ ├app/
+ │　├templates/
+ │　│　└index.html
+ │　├static/
+ │　│　└images/
+ │　│　　└torii.jpg
+ │　└app.py
+ └run.py
+
+ ```
+
+
 
 
 
