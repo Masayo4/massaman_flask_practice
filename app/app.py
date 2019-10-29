@@ -1,5 +1,5 @@
 #ルーティングのためのファイル
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 #モジュールインポート
 
 app = Flask(__name__)
@@ -7,12 +7,15 @@ app = Flask(__name__)
 
 #/へのアクセスの処理
 @app.route("/")
-def hello():
-    return "Hello World"
+#def hello():
+#    return "Hello World"
 
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    #ステップ2で作成 クエストリング
+    name = request.args.get("name")
+    return render_template("index.html",name=name)
+    #ここまでステップ2
 
 if __name__ == '__main__':
     app.run(debug=True)

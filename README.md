@@ -37,7 +37,11 @@ staticの下にimagesのdirをたす
  └run.py
 
  ```
-
+### クエストリングをHTMLに反映  
+render_template()の引数に値を入れることができるようにする  
+app.pyの編集  
+`http://127.0.0.1:5000/index?name=massaman`  
+をrun.pyを実行した後にURL指定すると?name=massaman のmassamanをtitleにnameという変数を入れている  
 
 
 
