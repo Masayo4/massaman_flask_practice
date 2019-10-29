@@ -43,6 +43,10 @@ app.pyの編集
 `http://127.0.0.1:5000/index?name=massaman`  
 を`run.py`を実行した後にURL指定すると`?name=massaman` の`massaman`をtitleにnameという変数を入れている  
 
+### if文制御  
+htmlのレンダリングの際, if文によって表示するHTMLを変更する  
+クエストリングによって表示するHTMLの内容を変更する処理を書く(このときHTMLないのカッコに注意...)  
+
 
 
 

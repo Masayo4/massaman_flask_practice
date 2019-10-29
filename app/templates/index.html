@@ -7,7 +7,17 @@
     <!-- ここにクエストリングを代入する　-->
   </head>
   <body>
-    <h1>Webアプリ初心者のFlaskチュートリアル</h1>
+    <!-- if文による制御を足す
+    特別な文字列のときの処理、クエストリングがあるときの処理、それ以外の処理等分けることが可能
+    制御自体は{if}...{elif}..{else}...{endif}で可能
+  -->
+    {% if name == "massaman" %}
+    <h1>スペシャル{{name}}神社</h1>
+    {% elif name %}
+    <h1>{{name}}神社</h1>
+    {% else %}
+    <h1>ただの神社</h1>
+    {% endif %}
     <!-- 画像をぶち込むときは普通にpath指定して書いてOK -->
     <img src="/static/images/torii.png" alt="鳥居">
   </body>
