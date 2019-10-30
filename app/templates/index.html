@@ -26,6 +26,11 @@
 
     <!-- 画像をぶち込むときは普通にpath指定して書いてOK -->
     <img src="/static/images/torii.png" alt="鳥居">
+    <form action="/add" method="post">
+      <input type="text" name="title" placeholder="title">
+      <input type="text" name="body" placeholder="body">
+      <input type="submit" value="add">
+    </form>
     <!--
     {% for word in okyo %}
     <p>{{word}}</p>
@@ -33,8 +38,22 @@
     -->
     <!-- flaskのfor制御　基本的にはpythonの書き方と同じで,endforがつく -->
     <!-- 以下DBからfor文でコンテンツ引っ張りだしてくる -->
-    {% for onegai in all_onegai %}
-   <p>{{onegai.title}}：{{onegai.body}}（{{onegai.date}}）</p>
-   {% endfor %}
+    <form action="/update" method="post" id="update">
+          <input type="text" name="title" placeholder="title">
+          <input type="text" name="body" placeholder="body">
+          <input type="submit" value="Update">
+    </form>
+    <form action="/delete" method="post" id="delete">
+        <input type="submit" value="Delete Selected All Onegai">
+    </form>
+          <!--　DBの中身を入れ替える必要があるので,UPDATEして保存するための関数を作成する -->
+          {% for onegai in all_onegai %}
+          <!--　for文の呼び出し処理のなかに変更をするためのボタンをつける -->
+          <div>
+           <input type="radio" name="update" form="update" value={{onegai.id}}>
+           <input type="checkbox" name="delete" form="delete" value={{onegai.id}}>
+           {{onegai.title}}：{{onegai.body}}（{{onegai.date}}）
+       </div>
+          {% endfor %}
   </body>
 </html>

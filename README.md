@@ -98,8 +98,51 @@ modelsのdirを直下にたす(SQLの制御)
  >>> db_session.add(c3)  
  >>> db_session.commit()  
  ```  
- DBからHTMLに表示する
- 
+ DBからHTMLに表示する  
+
+### UIの実装(Databaseをweb上から処理する)  
+レコードの追加・更新・消去の処理を追加    
+index.html と app.pyの中を編集  
+HTMLは表示の場所を変えるだけなのでそんなに難しいことはない  
+<追加>  
+```
+@app.route("/add", methods=["post"])
+def add():
+    title = request.form["title"]
+    body = request.form["body"]
+    content = OnegaiContent(title,body,datetime.now())
+    db_session.add(content)
+    db_session.commit()
+    #対話型pythonでやった処理を実際に関数にしただけ
+    return index()
+```  
+<編集>  
+```
+@app.route("/update",methods=["post"])
+def update():
+    content = OnegaiContent.query.filter_by(id=request.form["update"]).first()
+    #現在のDBの中にあるものを特定して持ってくる
+    content.title = request.form["title"]
+    content.body = request.form["body"]
+    db_session.commit()
+    #最後にDBの更新
+    #仕様的に重複するものだとエラーがでるので注意...(ここは本番の作るときは調べながら...)
+    return index()
+```  
+<消去>  
+```
+@app.route("/delete",methods=["post"])
+def delete():
+    id_list = request.form.getlist("delete")
+    #一致するものを消去するから全体をまず取り出す
+    for id in id_list:
+        content = OnegaiContent.query.filter_by(id=id).first()
+        db_session.delete(content)
+        #DBの中にあるコンテンツを消去する
+    db_session.commit()
+    return index()
+```  
+
 
 ## REFERENCE  
 [参考資料](https://qiita.com/kiyokiyo_kzsby/items/0184973e9de0ea9011ed)
