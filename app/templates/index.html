@@ -18,7 +18,17 @@
     {% else %}
     <h1>ただの神社</h1>
     {% endif %}
+    <!-- form 部分の作成 POST処理をする際の話を書く -->
+    <form action="/index" method="POST">
+      <input type="text" name="name" placeholder="Enter Name">
+      <input type="submit" value="Submit">
+    </form>
+    
     <!-- 画像をぶち込むときは普通にpath指定して書いてOK -->
     <img src="/static/images/torii.png" alt="鳥居">
+    {% for word in okyo %}
+    <p>{{word}}</p>
+    {% endfor %}
+    <!-- flaskのfor制御　基本的にはpythonの書き方と同じで,endforがつく -->
   </body>
 </html>
