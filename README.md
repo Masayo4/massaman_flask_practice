@@ -142,7 +142,10 @@ def delete():
     db_session.commit()
     return index()
 ```  
-
+### ログイン&ユーザー管理  
+ログイン機能,新規ユーザー登録, ログアウト機能　の実装  
+新しいHTML, `top.html`と`newcomer.html`を作成  
+`models.py` の中に `User`のクラスを追加する
 
 ## REFERENCE  
 [参考資料](https://qiita.com/kiyokiyo_kzsby/items/0184973e9de0ea9011ed)

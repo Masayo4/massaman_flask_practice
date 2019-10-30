@@ -6,6 +6,7 @@
     <title>{{name}}</title>
     <!-- ここにクエストリングを代入する　-->
   </head>
+  <a href="/logout">ログアウトする</a>
   <body>
     <!-- if文による制御を足す
     特別な文字列のときの処理、クエストリングがあるときの処理、それ以外の処理等分けることが可能
@@ -19,10 +20,12 @@
     <h1>ただの神社</h1>
     {% endif %}
     <!-- form 部分の作成 POST処理をする際の話を書く -->
+    <!-- 最終形では使わない処理>
     <form action="/index" method="POST">
       <input type="text" name="name" placeholder="Enter Name">
       <input type="submit" value="Submit">
     </form>
+    -->
 
     <!-- 画像をぶち込むときは普通にpath指定して書いてOK -->
     <img src="/static/images/torii.png" alt="鳥居">
